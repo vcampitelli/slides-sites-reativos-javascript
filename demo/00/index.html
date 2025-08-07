@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>Site reativo</title>
+    </head>
+    <body>
+        <div>
+            Meu valor é <span></span>
+            <button type="button" id="btn-increase">Mudar valor</button>
+        </div>
+        <div>
+            <label>
+                <input type="text" placeholder="Email">
+            </label>
+            <button type="button" id="btn-submit">Submeter</button>
+        </div>
+        <script type="module">
+            import App from './js/App.js';
+            import { init } from './js/react.js';
+            let rerenders = 0;
+            window.render = function () {
+                console.log('Re-renderizando ' + (++rerenders));
+                init();
+                App();
+            }
+            window.render();
+        </script>
+    </body>
+</html>
