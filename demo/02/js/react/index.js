@@ -26,7 +26,7 @@ export function init (component, root) {
 }
 
 export function mountApp () {
-    console.group('Renderizando pela ' + (++rerenders) + 'ª vez');
+    console.groupCollapsed('Renderizando pela ' + (++rerenders) + 'ª vez');
     resetStates();
     resetEffects();
     render(entryComponent.type(), entryRoot);

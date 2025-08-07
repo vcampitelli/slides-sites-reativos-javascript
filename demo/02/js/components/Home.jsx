@@ -1,13 +1,40 @@
 import { useEffect, useState } from '@/react';
 
-export default function Home() {
-    /** @typedef Post {id: number, userId: number, title: string, body: string} */
-    const [data, setData] = useState(/** @type {Post[]|Error|null} */ null);
-    const [number, setNumber] = useState(0);
+export default function Home () {
+    const [postId, setPostId] = useState(0);
+
+    return (
+        <>
+            <form className="pure-form">
+                <fieldset>
+                    <div className="mb-1">
+                        Buscar post:{' '}
+                        <input
+                            type="number"
+                            value={postId}
+                            min={0}
+                            max={100}
+                            size={2}
+                            onChange={(e) => setPostId(parseInt(e.target.value, 10))}/>
+                    </div>
+                </fieldset>
+            </form>
+            <PostContent id={postId}/>
+        </>
+    );
+};
+
+function PostContent ({ id }) {
+    /** @typedef {{id: number, userId: number, title: string, body: string}} Post */
+    const [data, setData] = useState(/** @type {Post|Error|null} */ null);
 
     useEffect(() => {
+        if (!id) {
+            return;
+        }
+        setData(null);
         setTimeout(() => {
-            fetch('https://jsonplaceholder.typicode.com/posts')
+            fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
                 .then(response => {
                     if (!response.ok) {
                         console.error(response);
@@ -21,13 +48,19 @@ export default function Home() {
                     setData((err instanceof Error) ? err : new Error(err));
                 });
         }, 1000);
-    }, []);
+    }, [id]);
+
+    if (!id) {
+        return (
+            <div>Escolha o ID de um post de 1 a 100</div>
+        );
+    }
 
     if (data === null) {
         return (
             <>
                 <p>
-                    Buscando dados dos posts...
+                    Buscando dados do post {id}...
                 </p>
                 <div className="loading">Carregando...</div>
             </>
@@ -39,46 +72,14 @@ export default function Home() {
             <div className="error">
                 Erro: {data.message}
             </div>
-        )
+        );
     }
 
     return (
-        <>
-            <form className="pure-form">
-                <fieldset>
-                    <div className="mb-1">
-                        Valor do <code>number</code>: <input type="text" readOnly value={number} size={2} />{' '}
-                        <button
-                            type="button"
-                            id="btn-increase"
-                            className="pure-button"
-                            onClick={() => setNumber(number + 1)}>
-                            Aumentar valor
-                        </button>
-                    </div>
-                </fieldset>
-            </form>
-            <table class="pure-table pure-table-striped">
-                <thead>
-                    <tr>
-                        <th>Post</th>
-                        <th>Título</th>
-                        <th>Usuário</th>
-                        <th>Conteúdo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {data.map((post) => (
-                        <tr key={post.id}>
-                            <td><b>#{post.id}</b></td>
-                            <td><b>{post.title}</b></td>
-                            <td><i>#{post.userId}</i></td>
-                            <td>{post.body}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </>
+        <div key={data.id}>
+            <p><b>#{data.id} {data.title}</b></p>
+            <p><i>Por #{data.userId}</i></p>
+            <p>{data.body}</p>
+        </div>
     );
-};
-
+}

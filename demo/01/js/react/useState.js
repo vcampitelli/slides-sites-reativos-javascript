@@ -14,8 +14,8 @@ let timeout;
  */
 export default function useState (defaultValue) {
     index++;
-    console.group(index, 'useState()');
-    console.log('valor atual:', PILHA[index]);
+    console.groupCollapsed(index, 'useState()');
+    console.debug('valor atual:', PILHA[index]);
     console.trace();
     console.groupEnd();
     if (typeof PILHA[index] === 'undefined') {
@@ -34,9 +34,9 @@ export function resetStates() {
 
 const doSetState = (index) => {
     return (newValue) => {
-        console.group(index, 'setState()');
-        console.log('valor anterior:', PILHA[index]);
-        console.log('novo valor:', newValue);
+        console.groupCollapsed(index, 'setState()');
+        console.debug('valor anterior:', PILHA[index]);
+        console.debug('novo valor:', newValue);
         console.trace();
         console.groupEnd();
 
