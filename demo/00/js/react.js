@@ -1,21 +1,22 @@
+// "Storage"
 const PILHA = {};
 let index = -1;
+
+// Handler do setTimeout() para evitar re-renders muito rápidos
+let timeout;
 
 export function init () {
     index = -1;
 };
 
-let dataUltimaRerenderizacao = (new Date()).getTime();
 const doSetState = (index) => {
     return (newValue) => {
         PILHA[index] = newValue;
-        dataUltimaRerenderizacao++;
 
-        const date = (new Date).getTime();
-        if (date - dataUltimaRerenderizacao > 100) { // 100ms
-            window.render();
-            dataUltimaRerenderizacao = date;
+        if (timeout) {
+            clearTimeout(timeout);
         }
+        timeout = setTimeout(window.render, 50);
     };
 };
 
