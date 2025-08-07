@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="author" content="Vinícius Campitelli, eu@viniciuscampitelli.com">
+
+        <title>Criando sites reativos com JavaScript puro</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link rel="stylesheet" href="reveal.js/dist/reset.css">
+        <link rel="stylesheet" href="reveal.js/dist/reveal.css">
+        <link rel="stylesheet" href="reveal.js/dist/theme/black.css">
+        <link rel="stylesheet" href="reveal.js/plugin/highlight/monokai.css">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+              rel="stylesheet">
+        <link rel="stylesheet" href="assets/styles.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>Criando sites reativos com JavaScript puro</h1>
+                </section>
+                <section>
+                    <div class="problem">
+                        <div>
+                            <p class="header-problem">O Problema</p>
+                            <p>
+                                Interpolar expressões, estruturas condicionais e de repetição são difíceis
+                            </p>
+                            <pre><code class="javascript" data-trim data-line-numbers>
+								const $ul = document.getElementsById('ul');
+								for (const item of items) {
+									const $li = document.createElement('li');
+									$li.innerText = item.titulo;
+									$ul.appendChild($li);
+								}
+							</code></pre>
+                        </div>
+                        <div>
+                            <p class="header-solution">Solução no React</p>
+                            <p>
+                                Criação de uma sintaxe chamada <code>JSX</code> <i>(<b>J</b>avaScript <b>S</b>yntax
+								e<b>X</b>tension)</i>, que facilita a escrita das <i>interfaces</i>
+                            </p>
+                            <pre><code class="jsx" data-trim data-line-numbers>
+								return (
+									&lt;ul>
+										{itens.map((item) => (
+											&lt;li>
+												{item.nome}
+											&lt;/li>
+										)}
+									&lt;/ul>
+								);
+							</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="problem">
+                        <div>
+                            <p class="header-problem">O Problema</p>
+                            <p>
+                                Recarregar componentes quando algum valor é alterado ou precisa ser recomputado
+                            </p>
+                        </div>
+                        <div>
+                            <p class="header-solution">Solução no React</p>
+                            <p>
+                                Funcionalidade <code>useState()</code> que retorna um <i>array</i> com dois elementos: o
+								valor atual e um método de mutação para alterá-lo
+                            </p>
+                            <pre><code class="jsx" data-trim data-line-numbers>
+								import { useState } from 'react';
+
+								function Componente() {
+									const [count, setCount] = useState(0);
+
+									return (
+										&lt;>
+											&lt;input type="number" value={count} />
+											&lt;button
+												type="button"
+												onClick={() => setCount(count + 1)}>
+												Incrementar
+											&lt;/button>
+
+										&lt;/>
+									);
+								}
+							</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="problem">
+                        <div>
+                            <p class="header-problem">O Problema</p>
+                            Fluxo de "loading" + carregar dados
+                        </div>
+                        <div>
+                            <p class="header-solution">Solução no React</p>
+							<p>
+								Funcionalidade <code>useEffect</code> que causa a re-renderização de um componente
+								quando determinados valores (chamados de dependências) são alterados
+							</p>
+							<pre><code class="jsx" data-trim data-line-numbers>
+								import { useEffect, useState } from 'react';
+
+								function Componente() {
+									const [data, setData] = useState(null);
+
+									useEffect(() => {
+										fetch('/itens')
+											.then(r => r.json())
+											.then(setData);
+									}, []);
+
+									if (data === null) {
+										return (
+											&lt;div>Carregando...&lt;/div>
+										);
+									}
+
+									return (
+										&lt;pre>
+											{JSON.stringify(data)}
+										&lt;/pre>
+									);
+								}
+							</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="problem">
+                        <div>
+                            <p class="header-problem">O Problema</p>
+                            Passar informação entre componentes da página
+                        </div>
+                        <div>
+                            <p class="header-solution">Solução no React</p>
+                            <code>useContext</code>
+							<pre><code class="jsx" data-trim data-line-numbers>
+							    import { createContext } from 'react';
+
+								const AuthContext = createContext(null);
+
+								// @TODO
+							</code></pre>
+							<pre><code class="jsx" data-trim data-line-numbers>
+							    import { useContext } from 'react';
+
+								function Componente() {
+								  	const theme = useContext(AuthContext);
+
+									return (
+										// @TODO
+									);
+								}
+							</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="problem">
+                        <div>
+                            <p class="header-problem">O Problema</p>
+                        </div>
+                        <div>
+                            <p class="header-solution">Solução no React</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/dist/reveal.js"></script>
+        <script src="reveal.js/plugin/highlight/highlight.js"></script>
+        <script>
+            Reveal.initialize({
+                hash: true,
+                history: true,
+                mouseWheel: false,
+                overview: false,
+                slideNumber: 'c/t',
+                plugins: [RevealHighlight],
+            });
+        </script>
+    </body>
+</html>

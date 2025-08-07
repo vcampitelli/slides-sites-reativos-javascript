@@ -1,0 +1,26 @@
+:root {
+  --r-heading-font: var(--r-main-font);
+  --r-main-font: Ubuntu, sans-serif;
+  --r-main-font-size: 32px;
+}
+
+/* Layout */
+.problem {
+  display: flex;
+  justify-content: space-between;
+}
+.problem > div {
+  flex: 50% 1 0;
+}
+
+/* Problemas e Soluções */
+.header-problem,
+.header-solution {
+  font-weight: bold;
+}
+
+/* Códigos */
+.reveal pre {
+  margin: 0;
+  width: 100%;
+}
