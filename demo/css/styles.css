@@ -1,6 +1,7 @@
 :root {
   --spacing: 1em;
   --padding: 0.4em 0.5em;
+  --padding-2x: 0.8em 1em;
   --radius: 0.25em;
 }
 
@@ -82,4 +83,14 @@ input[size] {
   100% {
     transform: rotate(360deg);
   }
+}
+
+#auth-provider {
+  background: #fafafa;
+  padding: var(--padding-2x);
+  border: 1px dotted #ddd;
+  border-radius: var(--radius);
+}
+#auth-provider > h1:first-child {
+  margin-top: 0;
 }
