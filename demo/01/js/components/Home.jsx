@@ -14,7 +14,7 @@ export default function Home() {
         <form className="pure-form">
             <fieldset>
                 <div className="mb-1">
-                    Valor do <code>number</code>: <input type="text" readOnly value={number} size={2} />{' '}
+                    Valor do <code>number</code>: <input type="text" readOnly value={number} size={2} />
                     <button
                         type="button"
                         id="btn-increase"
@@ -25,13 +25,11 @@ export default function Home() {
                 </div>
                 <div>
                     <label>E-mail:</label>
-                    {' '}
                     <input
                         type="text"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}/>
-                    {' '}
                     <button
                         type="button"
                         id="btn-submit"

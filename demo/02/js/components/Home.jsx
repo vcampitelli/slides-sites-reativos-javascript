@@ -8,7 +8,7 @@ export default function Home () {
             <form className="pure-form">
                 <fieldset>
                     <div className="mb-1">
-                        Buscar post:{' '}
+                        Buscar post:
                         <input
                             type="number"
                             value={postId}

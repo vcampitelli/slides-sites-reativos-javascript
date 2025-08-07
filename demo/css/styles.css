@@ -44,6 +44,10 @@ a:is(:hover, :focus) {
 .mb-1 {
   margin-bottom: 0.5em;
 }
+.pure-form input,
+.pure-button:last-child {
+  margin-left: 1em;
+}
 
 input[size] {
   text-align: center;
