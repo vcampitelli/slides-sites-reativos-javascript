@@ -1,5 +1,6 @@
 import { h, render, Fragment } from 'preact';
 import { resetStates } from './useState';
+import { resetEffects } from './useEffect';
 
 // Usado pelo esbuild para renderizar JSX
 window.h = h;
@@ -27,8 +28,10 @@ export function init (component, root) {
 export function mountApp () {
     console.group('Renderizando pela ' + (++rerenders) + 'ª vez');
     resetStates();
+    resetEffects();
     render(entryComponent.type(), entryRoot);
     console.groupEnd();
 }
 
 export { default as useState } from './useState';
+export { default as useEffect } from './useEffect';

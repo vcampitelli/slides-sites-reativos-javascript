@@ -1,6 +1,7 @@
 :root {
   --spacing: 1em;
   --padding: 0.4em 0.5em;
+  --radius: 0.25em;
 }
 
 h1 {
@@ -46,4 +47,35 @@ a:is(:hover, :focus) {
 
 input[size] {
   text-align: center;
+}
+
+.error {
+  background: #dd514c;
+  color: #fff;
+  padding: var(--padding);
+  border-radius: var(--radius);
+}
+
+/* @link https://cssloaders.github.io/ */
+.loading:before {
+  content: "";
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  border: 4px solid currentColor;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  vertical-align: text-bottom;
+  box-sizing: border-box;
+  margin-right: 0.5em;
+  animation: fullCircle 1s linear infinite;
+  opacity: 0.5;
+}
+@keyframes fullCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
