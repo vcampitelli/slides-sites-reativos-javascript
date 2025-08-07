@@ -1,8 +1,6 @@
-import { Component } from 'preact';
-
 /**
  * @template T
- * @typedef {{Provider: Component, __context__: {defaultValue: T, value: T | undefined}}} Context<T = any>
+ * @typedef {{Provider: import('preact').Component, __context__: {defaultValue: T, value: T | undefined}}} Context<T = any>
  */
 
 /**

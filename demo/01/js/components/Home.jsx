@@ -4,14 +4,16 @@ export default function Home() {
     const [number, setNumber] = useState(0);
     const [email, setEmail] = useState('');
 
-    const submit = () => {
+    const submit = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         alert(`Irei submeter o form com ${number} e ${email}`);
         setNumber(0);
         setEmail('');
     };
 
     return (
-        <form className="pure-form">
+        <form className="pure-form" onSubmit={submit}>
             <fieldset>
                 <div className="mb-1">
                     Valor do <code>number</code>: <input type="text" readOnly value={number} size={2} />
@@ -29,12 +31,12 @@ export default function Home() {
                         type="text"
                         placeholder="Email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}/>
+                        onChange={(e) => setEmail(e.target.value)}
+                        required/>
                     <button
-                        type="button"
+                        type="submit"
                         id="btn-submit"
-                        className="pure-button pure-button-primary"
-                        onClick={submit}>
+                        className="pure-button pure-button-primary">
                         Enviar
                     </button>
                 </div>
