@@ -1,36 +1,21 @@
-import { useState } from './react';
+import Home from '@/components/Home';
+import '~/pure-min.css';
+import '~/styles.css';
 
 export default function App() {
-    const [number, setNumber] = useState(0);
-    const [email, setEmail] = useState('');
-
-    const submit = () => {
-        alert(`Irei submeter o form com ${number} e ${email}`);
-        setNumber(0);
-        setEmail('');
-    };
-
     return (
-        <>
-            <div>
-                Valor do <kbd>number</kbd>: <span>{number}</span>
-                <button
-                    type="button"
-                    id="btn-increase"
-                    onClick={() => setNumber(number + 1)}>
-                    Aumentar valor
-                </button>
-            </div>
-            <div>
-                <label>
-                    <input type="text"
-                           placeholder="Email"
-                           value={email}
-                           onChange={(e) => setEmail(e.target.value)} />
-                </label>
-                <button type="button" id="btn-submit" onClick={submit}>Submeter</button>
-            </div>
-        </>
-    );
+        <div id="layout">
+            <header>
+                <h1>Criando sites reativos com JavaScript</h1>
+                <h2>Demo do <code>useState</code></h2>
+            </header>
+            <main>
+                <Home />
+            </main>
+            <footer>
+                Por <a href="https://github.com/vcampitelli" target="_blank" rel="noopener">@vcampitelli</a>
+            </footer>
+        </div>
+    )
 };
 
