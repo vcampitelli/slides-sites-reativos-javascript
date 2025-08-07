@@ -1,0 +1,16 @@
+{
+  "name": "sites-reativos-js-puro-01",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.27.1",
+    "preact": "^10.27.0",
+    "vite": "^7.0.6"
+  }
+}

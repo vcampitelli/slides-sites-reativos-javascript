@@ -33,10 +33,7 @@ export default function AuthProvider ({ value, children }) {
 
     return (
         <AuthContext.Provider value={context}>
-            <div className="fieldset-highlight">
-                <h1>Auth Provider</h1>
-                {children}
-            </div>
+            {children}
         </AuthContext.Provider>
     );
 }

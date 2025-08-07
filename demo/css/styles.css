@@ -46,7 +46,7 @@ a:is(:hover, :focus) {
   margin-bottom: 0.5em;
 }
 .pure-form input,
-.pure-button:last-child {
+.pure-button:last-child:not(:first-child) {
   margin-left: 1em;
 }
 
@@ -85,12 +85,12 @@ input[size] {
   }
 }
 
-#auth-provider {
+.fieldset-highlight {
   background: #fafafa;
   padding: var(--padding-2x);
   border: 1px dotted #ddd;
   border-radius: var(--radius);
 }
-#auth-provider > h1:first-child {
+.fieldset-highlight > h1:first-child {
   margin-top: 0;
 }
