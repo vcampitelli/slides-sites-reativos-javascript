@@ -245,6 +245,12 @@ a.reference:after {
 code:not(.hljs) {
   color: var(--sp-syntax-color-tag);
 }
+.hljs.language-shell {
+  user-select: all;
+}
+.hljs.language-shell > span.hljs-meta.prompt_:first-child {
+  user-select: none;
+}
 .hljs-ln-line.hljs-ln-numbers {
   color: var(--sp-colors-surface2);
 }
