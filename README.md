@@ -1,6 +1,8 @@
-# Criando sites reativos com JavaScript puro
+# :atom_symbol: Criando sites reativos com JavaScript puro
 
-## Slides
+## :chart_with_upwards_trend: Slides
+
+Acesse remotamente em [viniciuscampitelli.com/slides-sites-reativos-javascript](https://viniciuscampitelli.com/slides-sites-reativos-javascript) ou localmente:
 
 - Clone este repositório com o parâmetro `--recursive`:
   ```shell
@@ -8,7 +10,7 @@
   ```
 - Acesse os _slides_ através do arquivo `docs/index.html` em seu navegador
 
-## Demonstrações
+## :hammer_and_wrench: Demonstrações
 
 Para executar as demonstrações localmente:
 
@@ -18,7 +20,7 @@ Para executar as demonstrações localmente:
   ```
 - Instale as dependências da primeira demonstração:
   ```shell
-  cd slides-sites-reativos-javascript/demo/01
+  cd slides-sites-reativos-javascript/demo/01-jsx
   npm install 
   ```
 - Para visualizar cada uma das demonstrações, entre na respectiva pasta e execute:

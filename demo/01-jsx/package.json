@@ -1,0 +1,21 @@
+{
+  "name": "sites-reativos-javascript-puro",
+  "author": {
+	"name": "Vinícius Campitelli",
+	"email": "eu@viniciuscampitelli.com",
+	"url": "https://viniciuscampitelli.com/"
+  },
+  "homepage": "https://github.com/vcampitelli/slides-sites-reativos-javascript",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild js/main.jsx --bundle --outdir=dist/ --jsx-factory=h --jsx-fragment=Fragment --servedir=dist",
+	"prebuild": "mkdir -p dist && cp index.html dist/ && sed -i 's#js/main.jsx#main.js#' dist/index.html"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.27.1",
+    "preact": "^10.27.0",
+    "vite": "^7.0.6"
+  }
+}

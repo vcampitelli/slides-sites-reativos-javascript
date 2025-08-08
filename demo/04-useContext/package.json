@@ -1,5 +1,11 @@
 {
-  "name": "sites-reativos-js-puro-01",
+  "name": "sites-reativos-javascript-puro",
+  "author": {
+	"name": "Vinícius Campitelli",
+	"email": "eu@viniciuscampitelli.com",
+	"url": "https://viniciuscampitelli.com/"
+  },
+  "homepage": "https://github.com/vcampitelli/slides-sites-reativos-javascript",
   "private": true,
   "version": "0.0.0",
   "type": "module",
