@@ -79,7 +79,7 @@ img {
   column-gap: 1em;
 }
 .d-flex.cols-2 > div {
-  flex: 50% 1 0;
+  flex: calc(50% - 0.5em) 1 0;
 }
 .h-100 {
   height: 100%;
@@ -89,7 +89,7 @@ img {
 .problem {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 20px;
+  column-gap: 1em;
 }
 .problem > div:nth-child(2) {
   order: 2;
@@ -123,6 +123,10 @@ h1:not(.title, .title-smaller, :last-child) {
 h1.title-smaller {
   --r-heading1-size: 1.3em;
 }
+.slide-history > h2 > i {
+  font-weight: 500;
+  color: var(--sp-syntax-color-definition);
+}
 
 /* Tipografia */
 .reveal em, .reveal i {
@@ -136,12 +140,10 @@ h1.title-smaller {
   margin: 0;
   padding: 0.5em;
   border-radius: var(--border-radius);
+  opacity: 0.9;
 }
-p.code-caption {
-  margin: 0.5em 0 0;
-  font-size: 0.6em;
-  font-style: oblique;
-  color: var(--sp-colors-surface2);
+.reveal blockquote + blockquote {
+  margin-top: 1em;
 }
 
 /* Sobre mim */
@@ -238,7 +240,7 @@ a.reference:after {
   width: 100%;
 }
 .reveal pre + pre {
-  margin-top: 10px;
+  margin-top: 1em;
 }
 code:not(.hljs) {
   color: var(--sp-syntax-color-tag);
@@ -256,6 +258,8 @@ pre.code-wrapper > .hljs {
   letter-spacing: var(--code-letter-spacing);
   border-radius: var(--border-radius);
   box-sizing: border-box;
+  scrollbar-color: var(--react-color-1) var(--react-code-background-color);
+  scrollbar-width: thin;
 }
 
 .hljs-tag,

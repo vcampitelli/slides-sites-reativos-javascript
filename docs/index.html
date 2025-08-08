@@ -168,27 +168,38 @@
                     <section data-auto-animate>
                         <h1 class="title"><i>Disclaimer</i></h1>
                         <blockquote>
-                            A ideia dessa palestra é despertar a curiosidade! Em cenários reais, utilize o próprio
-                            <a href="https://react.dev/" target="_blank" rel="noopener">React</a>, ou bibliotecas como o
-                            <a href="https://preactjs.com/" target="_blank" rel="noopener">Preact</a>.
+                            A ideia dessa palestra é despertar a curiosidade! Em cenários reais, utilize bibliotecas
+                            robustas, como
+                            <a href="https://react.dev/" target="_blank" rel="noopener">React</a>,
+                            <a href="https://svelte.dev/" target="_blank" rel="noopener">Svelte</a>,
+                            <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue.js</a> ou
+                            <a href="https://angular.dev/" target="_blank" rel="noopener">Angular</a>.
+                        </blockquote>
+                        <blockquote class="fragment">
+                            Também existem outras alternativas, como
+                            <a href="https://www.solidjs.com/" target="_blank" rel="noopener">SolidJS</a>,
+                            <a href="https://preactjs.com/" target="_blank" rel="noopener">Preact</a> (compatível com
+                            React) ou até mesmo
+                            <a href="https://htmx.org/" target="_blank" rel="noopener">htmx</a>.
                         </blockquote>
                     </section>
                 </section> <!-- Disclaimer -->
 
                 <section> <!-- História -->
-                    <section data-auto-animate data-auto-animate-restart>
+                    <section class="slide-history" data-auto-animate data-auto-animate-restart>
                         <h1>Uma breve <span>história do tempo</span>...</h1>
                     </section>
-                    <section data-auto-animate>
+                    <section class="slide-history" data-auto-animate>
                         <h1>Uma breve <span>história do tempo</span>...</h1>
-                        <h2>Os primórdios com PHP</h2>
+                        <h2>Os (meus) primórdios com PHP</h2>
                         <pre><code class="html" data-trim data-line-numbers>
                             &lt;html>
                                 &lt;body>
                                     &lt;div id="header">
                                         &lt;!-- ... -->
+                                        &lt;a href="/pagina">Link&lt;/a>
                                     &lt;/div>
-                                    &lt;iframe src="body.php?page=&lt;?= $_GET['page'] ?>">&lt;/iframe>
+                                    &lt;iframe src="body.php?page=&lt;?= $_GET['page'] ?>" name="centro">&lt;/iframe>
                                     &lt;div id="footer">
                                         &lt;!-- ... -->
                                     &lt;/div>
@@ -196,7 +207,7 @@
                             &lt;/html>
                         </code></pre>
                     </section>
-                    <section data-auto-animate>
+                    <section class="slide-history" data-auto-animate>
                         <h1>Uma breve <span>história do tempo</span>...</h1>
                         <h2>Revolução com <span>jQuery</span> <i>(2006 ~ 2013)</i></h2>
                         <p>
@@ -233,11 +244,12 @@
                             A Complete History of JavaScript Frameworks in the Modern Age, from the Perspective of a Confused Backend Developer
                         </a>
                     </section>
-                    <section data-auto-animate>
+                    <section class="slide-history" data-auto-animate>
                         <h1>Uma breve <span>história do tempo</span>...</h1>
                         <h2>Novo mundo com <span>React</span> e <span>Vue</span> <i>(2013...)</i></h2>
                         <div class="d-flex cols-2">
                             <div>
+                                <p>Exemplo de código em React</p>
                                 <pre><code class="jsx" data-trim data-line-numbers>
                                     export default function MyApp() {
                                       return (
@@ -248,9 +260,9 @@
                                       );
                                     }
                                 </code></pre>
-                                <p class="code-caption">Exemplo de código em React</p>
                             </div>
                             <div>
+                                <p>Exemplo de código em Vue</p>
                                 <pre><code class="vue" data-trim data-line-numbers>
                                     &lt;div id="app">
                                       &lt;button @click="count++">
@@ -258,7 +270,6 @@
                                       &lt;/button>
                                     &lt;/div>
                                 </code></pre>
-                                <p class="code-caption">Exemplo de código em Vue</p>
                             </div>
                         </div>
 
@@ -269,13 +280,76 @@
                     </section>
                 </section> <!-- História -->
 
-                <section>
-                    O que é React? E vue? E Angular?
-                </section>
-
                 <section> <!-- Conceitos -->
                     <section>
                         <h1>Conceitos</h1>
+                    </section>
+                    <section data-auto-animate data-auto-animate-restart>
+                        <h1>Conceitos</h1>
+                        <h2>JSX</h2>
+
+                        <blockquote>
+                            JSX is a syntax extension for JavaScript that lets you write HTML-like markup inside a
+                            JavaScript file.
+                        </blockquote>
+
+                        <a href="https://react.dev/learn/writing-markup-with-jsx" target="_blank" rel="noopener"
+                           class="reference">
+                            Documentação do React
+                        </a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1>Conceitos</h1>
+                        <h2>JSX</h2>
+                        <div class="d-flex cols-2">
+                            <div>
+                                <p>Código em JSX</p>
+                                <pre><code class="jsx" data-trim data-line-numbers>
+                                    import { useState } from 'react';
+
+                                    export default function Componente() {
+                                        const [count, setCount] = useState(0);
+
+                                        return (
+                                            &lt;div>
+                                                &lt;p>Você clicou {count} vezes&lt;/p>
+
+                                                &lt;button
+                                                    type="button"
+                                                    onClick={() => setCount(count + 1)}>
+                                                    Incrementar
+                                                &lt;/button>
+                                            &lt;/div>
+                                        );
+                                    }
+                                </code></pre>
+                            </div>
+                            <div class="fragment">
+                                <p>Código transpilado em JavaScript</p>
+                                <pre><code class="javascript" data-trim data-line-numbers>
+                                    import { useState } from 'react';
+
+                                    export default function Componente () {
+                                        const [count, setCount] = useState(0);
+                                        return React.createElement(
+                                            'div', null,
+                                            React.createElement(
+                                                'p', null,
+                                                'Voc\xEA clicou ', count, ' vezes'
+                                            ),
+                                            React.createElement(
+                                                'button',
+                                                {
+                                                    type: 'button',
+                                                    onClick: () => setCount(count + 1),
+                                                },
+                                                'Incrementar',
+                                            )
+                                        );
+                                    }
+                                </code></pre>
+                            </div>
+                        </div>
                     </section>
                     <section>
                         <h1>Conceitos</h1>
@@ -291,11 +365,6 @@
                            rel="noopener" class="reference">
                             Documentação do React
                         </a>
-                    </section>
-                    <section>
-                        <h1>Conceitos</h1>
-                        <h2>JSX</h2>
-                        <!-- @FIXME -->
                     </section>
                     <section>
                         <h1>Conceitos</h1>
@@ -344,7 +413,7 @@
                             <div class="fragment" data-fragment-index="1">
                                 <div class="header-solution">Solução no React</div>
                                 <p>
-                                    Criação de uma sintaxe chamada <code>JSX</code>
+                                    Criação do <code>JSX</code> para facilitar o manuseio de elementos
                                 </p>
                             </div>
                             <div class="fragment" data-fragment-index="1">
@@ -399,7 +468,7 @@
                                 </p>
                             </div>
                             <div class="fragment" data-fragment-index="1">
-                                <pre><code class="jsx" data-trim data-line-numbers>
+                                <pre><code class="jsx" data-trim data-line-numbers="|1|4|8|11">
                                     import { useState } from 'react';
 
                                     export default function Componente() {
@@ -425,7 +494,8 @@
                             <div>
                                 <div class="header-problem">Problema</div>
                                 <p>
-                                    Fluxo para exibir um texto <i>"Carregando"</i> enquanto realiza uma operação assíncrona
+                                    Fluxo para exibir um texto <i>"Carregando"</i> enquanto realiza uma operação
+                                    assíncrona
                                 </p>
                             </div>
                             <div>
@@ -455,7 +525,7 @@
                                 </p>
                             </div>
                             <div class="fragment" data-fragment-index="1">
-                                <pre><code class="jsx" data-trim data-line-numbers>
+                                <pre><code class="jsx" data-trim data-line-numbers="|1|4|5-9|11-15|17-19">
                                     import { useEffect, useState } from 'react';
 
                                     export default function Componente() {
@@ -521,12 +591,13 @@
                             <div class="fragment" data-fragment-index="1">
                                 <div class="header-solution">Solução no React</div>
                                 <p>
-                                    <i>Hook</i> <code>useEffect()</code> com um <i>array</i> de dependências para executar a
-                                    função
+                                    <i>Hook</i> <code>useEffect()</code> com um <i>array</i> de dependências para
+                                    executar a função
                                 </p>
                             </div>
                             <div class="fragment" data-fragment-index="1">
-                                <pre class="h-100"><code class="jsx" data-trim data-line-numbers>
+                                <pre class="h-100"><code class="jsx" data-trim
+                                                         data-line-numbers="|1|4-5|7-14|14|16-22|24-31|33-38">
                                     import { useEffect, useState } from 'react';
 
                                     export default function Componente() {
@@ -600,12 +671,12 @@
                             <div class="fragment" data-fragment-index="1">
                                 <div class="header-solution">Solução no React</div>
                                 <p>
-                                    <i>Hooks</i> <code>createContext</code> e <code>useContext</code> para criação e uso de
-                                    informações
+                                    <i>Hooks</i> <code>createContext</code> e <code>useContext</code> para criação e uso
+                                    de informações
                                 </p>
                             </div>
                             <div class="fragment" data-fragment-index="1">
-                                <pre><code class="jsx" data-trim data-line-numbers>
+                                <pre><code class="jsx" data-trim data-line-numbers="|1|3|7-9">
                                     import { createContext } from 'react';
 
                                     export const ThemeContext = createContext(null);
@@ -618,7 +689,7 @@
                                         );
                                     }
                                 </code></pre>
-                                <pre><code class="jsx" data-trim data-line-numbers>
+                                <pre><code class="jsx" data-trim data-line-numbers="|1-2|5|8">
                                     import { useContext } from 'react';
                                     import ThemeContext from '@/providers/ThemeContext';
 
