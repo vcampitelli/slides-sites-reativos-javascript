@@ -14,14 +14,14 @@
         <link rel="stylesheet" href="reveal.js/dist/reveal.css">
         <link rel="stylesheet" href="reveal.js/dist/theme/black.css">
         <link rel="stylesheet"
-              href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,500;0,700;0,900;1,500&family=Source+Code+Pro:wght@200..900&display=swap">
+              href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,500;0,700;0,800;1,500;1,700&family=Source+Code+Pro:wght@300..600&display=swap">
         <link rel="stylesheet" href="assets/styles.css">
     </head>
     <body>
         <div class="reveal">
             <div class="slides">
                 <section id="first-slide">
-                    <h1>Criando sites reativos com JavaScript puro</h1>
+                    <h1 class="title">Criando <span>sites reativos</span> com JavaScript puro</h1>
                     <h2>Vinícius Campitelli</h2>
                 </section>
 
@@ -30,7 +30,8 @@
                         <h1>Sobre</h1>
                     </section>
                     <section>
-                        <h1>Sobre mim</h1>
+                        <h1>Sobre</h1>
+                        <h2>Sobre mim</h2>
                         <div id="about-me">
                             <div class="text-center">
                                 <figure id="profile-pic">
@@ -145,26 +146,27 @@
                         </div>
                     </section>
                     <section>
-                        <h1>Slides</h1>
+                        <h1><span>Sobre</span></h1>
+                        <h2>Slides</h2>
                         <figure>
-                            <a href="https://viniciuscampitelli.com/slides-sites-reativos-javascript-puro"
+                            <a href="https://viniciuscampitelli.com/slides-sites-reativos-javascript"
                                target="_blank" rel="noopener">
                                 <img src="assets/img/qrcode-slides.png" alt="QR Code" id="qrcode-slide">
                             </a>
                         </figure>
-                        <a href="https://viniciuscampitelli.com/slides-sites-reativos-javascript-puro" target="_blank"
+                        <a href="https://viniciuscampitelli.com/slides-sites-reativos-javascript" target="_blank"
                            rel="noopener">
-                            viniciuscampitelli.com/slides-sites-reativos-javascript-puro
+                            viniciuscampitelli.com/slides-sites-reativos-javascript
                         </a>
                     </section>
                 </section> <!-- Sobre -->
 
                 <section> <!-- Disclaimer -->
                     <section data-auto-animate data-auto-animate-restart>
-                        <h1>Disclaimer</h1>
+                        <h1 class="title"><i>Disclaimer</i></h1>
                     </section>
                     <section data-auto-animate>
-                        <h1>Disclaimer</h1>
+                        <h1 class="title"><i>Disclaimer</i></h1>
                         <blockquote>
                             A ideia dessa palestra é despertar a curiosidade! Em cenários reais, utilize o próprio
                             <a href="https://react.dev/" target="_blank" rel="noopener">React</a>, ou bibliotecas como o
@@ -173,10 +175,100 @@
                     </section>
                 </section> <!-- Disclaimer -->
 
-                <section>
-                    Como era antes?
-                    jQuery UI / Dojo / MooTools / outros
-                </section>
+                <section> <!-- História -->
+                    <section data-auto-animate data-auto-animate-restart>
+                        <h1>Uma breve <span>história do tempo</span>...</h1>
+                    </section>
+                    <section data-auto-animate>
+                        <h1>Uma breve <span>história do tempo</span>...</h1>
+                        <h2>Os primórdios com PHP</h2>
+                        <pre><code class="html" data-trim data-line-numbers>
+                            &lt;html>
+                                &lt;body>
+                                    &lt;div id="header">
+                                        &lt;!-- ... -->
+                                    &lt;/div>
+                                    &lt;iframe src="body.php?page=&lt;?= $_GET['page'] ?>">&lt;/iframe>
+                                    &lt;div id="footer">
+                                        &lt;!-- ... -->
+                                    &lt;/div>
+                                &lt;/body>
+                            &lt;/html>
+                        </code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h1>Uma breve <span>história do tempo</span>...</h1>
+                        <h2>Revolução com <span>jQuery</span> <i>(2006 ~ 2013)</i></h2>
+                        <p>
+                            Além de
+                            <a href="https://github.com/dojo/dojo" target="_blank" rel="noopener">Dojo</a>,
+                            <a href="https://github.com/jashkenas/backbone" target="_blank" rel="noopener">Backbone</a>,
+                            <a href="https://github.com/mootools/mootools-core" target="_blank"
+                               rel="noopener">MooTools</a>, a primeira versão do
+                            <a href="https://github.com/angular/angular.js" target="_blank"
+                               rel="noopener">AngularJS</a>...
+                        </p>
+
+                        <pre><code class="javascript" data-trim data-line-numbers>
+                            $(document).ready(function() {
+                                $.ajax({
+                                  url: '/posts/1',
+                                  method: 'GET',
+                                  success: function (post) {
+                                    $('#loading').fadeOut();
+                                    $('#content')
+                                        .html('<h1>' + post.title + '</h1><p>' + post.body + '</p>')
+                                        .fadeIn();
+                                  },
+                                  error: function() {
+                                    $('#loading').fadeOut();
+                                    $('#content').html('Erro ao carregar os dados').fadeIn();
+                                  }
+                                });
+                            });
+                        </code></pre>
+
+                        <a href="https://mohammeda.li/blog/a-complete-history-of-javascript-frameworks" target="_blank"
+                           rel="noopener" class="reference">
+                            A Complete History of JavaScript Frameworks in the Modern Age, from the Perspective of a Confused Backend Developer
+                        </a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1>Uma breve <span>história do tempo</span>...</h1>
+                        <h2>Novo mundo com <span>React</span> e <span>Vue</span> <i>(2013...)</i></h2>
+                        <div class="d-flex cols-2">
+                            <div>
+                                <pre><code class="jsx" data-trim data-line-numbers>
+                                    export default function MyApp() {
+                                      return (
+                                        &lt;div>
+                                          &lt;h1>Bem-vindo ao meu aplicativo&lt;/h1>
+                                          &lt;Componente />
+                                        &lt;/div>
+                                      );
+                                    }
+                                </code></pre>
+                                <p class="code-caption">Exemplo de código em React</p>
+                            </div>
+                            <div>
+                                <pre><code class="vue" data-trim data-line-numbers>
+                                    &lt;div id="app">
+                                      &lt;button @click="count++">
+                                        Count is: {{ count }}
+                                      &lt;/button>
+                                    &lt;/div>
+                                </code></pre>
+                                <p class="code-caption">Exemplo de código em Vue</p>
+                            </div>
+                        </div>
+
+                        <a href="https://www.youtube.com/watch?v=GW0rj4sNH2w" target="_blank" rel="noopener"
+                           class="reference">
+                            [JSConfUS 2013] Tom Occhino and Jordan Walke: JS Apps at Facebook
+                        </a>
+                    </section>
+                </section> <!-- História -->
+
                 <section>
                     O que é React? E vue? E Angular?
                 </section>
@@ -187,17 +279,45 @@
                     </section>
                     <section>
                         <h1>Conceitos</h1>
-                        VNode / Virtual DOM / Shadow DOM
+                        <h2><i>Virtual DOM</i></h2>
+
+                        <blockquote>
+                            O virtual DOM (VDOM) é um conceito de programação onde uma representação ideal, ou
+                            “virtual”, da interface do usuário é mantida em memória e sincronizada com o DOM “real” por
+                            uma biblioteca como o ReactDOM.
+                        </blockquote>
+
+                        <a href="https://pt-br.legacy.reactjs.org/docs/faq-internals.html" target="_blank"
+                           rel="noopener" class="reference">
+                            Documentação do React
+                        </a>
                     </section>
                     <section>
                         <h1>Conceitos</h1>
-                        Hooks
+                        <h2>JSX</h2>
+                        <!-- @FIXME -->
+                    </section>
+                    <section>
+                        <h1>Conceitos</h1>
+                        <h2><i>Hooks</i></h2>
+
+                        <blockquote>
+                            São recursos que permitem que você gerencie o estado, ciclos de vida do componente e outros
+                            recursos do React sem precisar escrever componentes em forma de classes.
+                        </blockquote>
+
+                        <a href="https://blog.betrybe.com/tecnologia/react-hooks/" target="_blank" rel="noopener"
+                           class="reference">
+                            Blog da Trybe
+                        </a>
                     </section>
                 </section> <!-- Conceitos -->
 
                 <section> <!-- Problemas -->
                     <section>
-                        <h1>Vamos aos problemas... e às soluções!</h1>
+                        <h1>
+                            Vamos ver alguns problemas...<br><span class="fragment">e suas soluções!</span>
+                        </h1>
                     </section>
                     <section>
                         <div class="problem">
@@ -464,6 +584,17 @@
                                         getCurrentTheme()
                                     );
                                 </code></pre>
+                                <pre><code class="javascript" data-trim data-line-numbers>
+                                    import { setCurrentTheme } from '@/preferences';
+
+                                    setCurrentTheme('dark');
+
+                                    document.location.reload(true);
+
+                                    // ou algo como:
+
+                                    reloadTheme();
+                                </code></pre>
                             </div>
 
                             <div class="fragment" data-fragment-index="1">
@@ -527,10 +658,10 @@
 
                 <section> <!-- Referências -->
                     <section data-auto-animate data-auto-animate-restart>
-                        <h1>Referências</h1>
+                        <h1 class="title">Referências</h1>
                     </section>
                     <section data-auto-animate>
-                        <h1>Referências</h1>
+                        <h1 class="title">Referências</h1>
                         <ul>
                             <li>
                                 <a href="https://react.dev/" target="_blank" rel="noopener">
@@ -547,12 +678,17 @@
                                     Biblioteca <code>esbuild</code> para processar JSX
                                 </a>
                             </li>
+                            <li>
+                                <a href="https://nanojsx.io/" target="_blank" rel="noopener">
+                                    Biblioteca <code>nano-jsx</code> para processar JSX
+                                </a>
+                            </li>
                         </ul>
                     </section>
                 </section> <!-- Referências -->
 
                 <section> <!-- Treinamentos in company -->
-                    <h1 class="title">Treinamentos in company</h1>
+                    <h1 class="title">Treinamentos <i>in company</i></h1>
                     <div class="d-flex items-center">
                         <div style="flex-shrink: 0">
                             <a href="https://bit.ly/vcampitelli" target="_blank" rel="noopener" class="d-block">

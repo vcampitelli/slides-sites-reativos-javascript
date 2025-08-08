@@ -1,6 +1,6 @@
 :root {
-  --r-background-color: var(--react-color-2);
-  --r-code-font: "Source Code Pro", monospace;
+  --r-background-color: var(--react-color-1);
+  --r-code-font: "Source Code Pro", serif;
   --r-heading-color: var(--r-main-color);
   --r-heading-font: var(--r-main-font);
   --r-heading-font-weight: 700;
@@ -17,25 +17,16 @@
   --code-letter-spacing: -0.03em;
 
   /* @link https://react.dev/ */
-  --react-color-1: #1b1e24;
-  --react-color-2: #23272f;
-  --react-color-3: #374151;
+  --react-color-1: #23272f;
   --react-code-background-color: #16181d;
   --sp-colors-accent: #58c4dc;
   --sp-colors-clickable: #999;
-  --sp-colors-disabled: #fff;
-  --sp-colors-error: #811e18;
-  --sp-colors-error-surface: #ffcdca;
-  --sp-colors-surface1: #16181d;
   --sp-colors-surface2: #343a46;
-  --sp-syntax-color-plain: #fff;
   --sp-syntax-color-comment: #757575;
   --sp-syntax-color-keyword: #77b7d7;
   --sp-syntax-color-tag: #dfab5c;
-  --sp-syntax-color-punctuation: #fff;
   --sp-syntax-color-definition: #86d9ca;
   --sp-syntax-color-property: #77b7d7;
-  --sp-syntax-color-static: #c64640;
   --sp-syntax-color-string: #977cdc;
 }
 
@@ -58,6 +49,21 @@
 #first-slide > h1 {
   --r-heading-font-weight: 900;
 }
+#first-slide > h1 > span {
+  background: linear-gradient(to bottom, var(--sp-colors-accent), var(--sp-syntax-color-property), var(--sp-syntax-color-string));
+  background-clip: text;
+  color: transparent;
+  background-size: auto 150%;
+  animation: moveBackground 5s infinite linear alternate;
+}
+@keyframes moveBackground {
+  0% {
+    background-position: 50% 0;
+  }
+  100% {
+    background-position: 50% 100%;
+  }
+}
 #first-slide > h2 {
   --r-heading2-size: 1em;
   --r-heading-color: var(--sp-colors-clickable);
@@ -71,6 +77,9 @@ img {
   display: flex;
   justify-content: space-between;
   column-gap: 1em;
+}
+.d-flex.cols-2 > div {
+  flex: 50% 1 0;
 }
 .h-100 {
   height: 100%;
@@ -91,7 +100,7 @@ img {
 .header-problem,
 .header-solution {
   margin: 0;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1.05em;
   color: var(--sp-colors-accent);
 }
@@ -100,9 +109,24 @@ img {
   margin-top: 0;
 }
 
+/* Cabeçalhos */
+h1 > span,
+h2 > span {
+  color: var(--sp-syntax-color-property);
+}
+h1:not(.title, .title-smaller, :last-child) {
+  --r-heading1-size: 1.2em;
+  --r-heading-font-weight: 500;
+  --r-heading-margin: 0;
+  opacity: 0.25;
+}
+h1.title-smaller {
+  --r-heading1-size: 1.3em;
+}
+
 /* Tipografia */
 .reveal em, .reveal i {
-  font-style: italic;
+  font-style: oblique;
 }
 .reveal strong, .reveal b {
   font-weight: 600;
@@ -112,6 +136,12 @@ img {
   margin: 0;
   padding: 0.5em;
   border-radius: var(--border-radius);
+}
+p.code-caption {
+  margin: 0.5em 0 0;
+  font-size: 0.6em;
+  font-style: oblique;
+  color: var(--sp-colors-surface2);
 }
 
 /* Sobre mim */
@@ -183,6 +213,25 @@ img {
   font-size: 1.3em;
 }
 
+
+/* Referências */
+a.reference {
+  font-size: 0.6em;
+}
+a.reference {
+  margin-top: 1em;
+  --link-opacity: 0.5;
+  opacity: var(--link-opacity);
+}
+a.reference:before {
+  opacity: var(--link-opacity);
+  content: '<';
+}
+a.reference:after {
+  opacity: var(--link-opacity);
+  content: '>';
+}
+
 /* Códigos */
 .reveal pre {
   margin: 0;
@@ -201,7 +250,7 @@ pre.code-wrapper > .hljs {
   display: block;
   overflow-x: auto;
   background: var(--react-code-background-color);
-  color: var(--sp-syntax-color-plain);
+  color: var(--r-main-color);
   padding: 1em;
   font-size: 0.9em;
   letter-spacing: var(--code-letter-spacing);
@@ -220,28 +269,15 @@ pre.code-wrapper > .hljs {
 .hljs-tag > .hljs-name {
   color: var(--sp-syntax-color-definition);
 }
-
-.hljs-code {
-  color: blue;
-  text-decoration: underline;
-}
-
+.hljs-code,
 .hljs-class .hljs-title {
-  color: green;
-  text-decoration: underline;
+  color: var(--sp-syntax-color-string);
 }
-
 .hljs-attr,
 .hljs-attribute {
   color: var(--sp-syntax-color-property);
 }
 
-.hljs-symbol,
-.hljs-regexp,
-.hljs-link {
-  color: red;
-  text-decoration: underline;
-}
 
 .hljs-string {
   color: var(--sp-syntax-color-string);
@@ -262,9 +298,11 @@ pre.code-wrapper > .hljs {
 .hljs-selector-pseudo,
 .hljs-addition,
 .hljs-template-tag,
-.hljs-template-variable {
-  color: yellow;
-  text-decoration: underline;
+.hljs-template-variable,
+.hljs-symbol,
+.hljs-regexp,
+.hljs-link {
+  color: var(--sp-syntax-color-string);
 }
 .hljs-variable {
   color: var(--sp-syntax-color-tag);
