@@ -1,16 +1,15 @@
 import { h } from 'preact';
 
 export default function Router ({ children }) {
-    console.log("pathname", document.location.pathname);
+    console.debug('Checando rotas', document.location.pathname);
     for (const child of children) {
         if (child.props.path === document.location.pathname) {
-            console.log("child match", child.props.path);
+            console.debug('Renderizando componente referente à', child.props.path);
             return child;
         }
-        console.log("child doesn't match", child.props.path);
     }
 
-    return (<div>não achei ninguém</div>);
+    return (<div>Nenhuma rota encontrada</div>);
 }
 
 export function Route({ path, component }) {
